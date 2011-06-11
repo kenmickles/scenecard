@@ -1,0 +1,45 @@
+
+<p class="plus-one">
+	<%= link_to "+ New Character", new_character_path, :class => 'new' %>
+</p>
+
+<% if @characters.count > 0 %>
+	
+	<table>
+		<thead>
+			<tr>
+				<th class="thumb"></th>
+				<th class="name">Name</th>
+				<th class="actor">Played by</th>
+				<th class="actions"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @characters.each do |c| %>
+				<tr class="<%= cycle('odd', 'even') %>">
+					<td class="thumb">
+						<%= image_tag c.thumbnail_url, :alt => "[Photo of #{c.name}]" %>
+					</td>
+					<td class="name"><%= c.name %></td>
+					<td class="actor">
+						<% if !c.facebook_id.blank? %>
+							<%= link_to c.actor_name, c.facebook_url %>
+						<% else %>
+							<em>Unknown</em>
+						<% end %>
+					</td>
+					<td class="actions">
+						<%= link_to "View", character_path(c), :class => 'view' %> |
+						<%= link_to "Edit", edit_character_path(c), :class => 'edit' %> |
+						<%= link_to "Delete", character_path(c), :method => :delete, :confirm => "Are you sure?", :class => 'delete' %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	
+<% else %>
+
+	<p class="none">No characters found. <%= link_to "Want to create one?", new_character_path, :class => 'new' %></p>
+	
+<% end %>

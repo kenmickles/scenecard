@@ -1,0 +1,128 @@
+body {
+  font-family: helvetica, arial, sans-serif;
+}
+
+body.scenes nav a.scenes,
+body.characters nav a.characters,
+body.timeline nav a.timeline {
+  font-weight: bold;
+}
+
+#wrapper {
+  width: 800px;
+  margin: 3em auto;
+}
+
+header {
+  margin-bottom: 2em;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+#flash p {
+  font-weight: bold;
+}
+
+#flash p.notice {
+  color: green;
+}
+
+#flash p.alert {
+  color: red;
+}
+
+p.plus-one {
+  text-align: right;
+}
+
+/* Index pages */
+
+body.index table {
+  width: 100%;
+}
+
+body.index table th {
+  padding: .5em;
+  border-bottom: 1px solid #333;
+}
+
+body.index table td {
+  padding: .5em;
+}
+
+body.index table tr.even td {
+  background-color: #eee;
+}
+
+body.index table td.thumb img {
+  width: 50px;
+}
+
+body.index table td.actions {
+  text-align: right;
+  font-size: .92em;
+}
+
+/* Forms */
+
+form fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+form fieldset ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+form fieldset ol li {
+  margin: 1em 0;
+  padding: 0;
+}
+
+form fieldset ol li label {
+  display: block;
+  font-size: .92em;
+  color: #999;
+  line-height: 1.5em;
+}
+
+form input[type="text"], 
+form input[type="email"], 
+form input[type="password"],
+form select,
+form textarea {
+	-moz-box-shadow:2px 2px 5px #DDD inset;
+	-webkit-box-shadow:2px 2px 5px #DDD inset;
+	box-shadow:2px 2px 5px #DDD inset;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #999999;
+	color: #333333;
+	font-size: 1.1em;
+	padding: .5em;
+}
+
+form textarea {
+  width: 30em;
+  height: 10em;
+}
+
+form fieldset.buttons {
+  margin-top: .5em;
+}
+
+form fieldset.buttons ol li {
+  margin: .33em 0;
+}
+
+form fieldset.buttons ol li.cancel {
+  margin-left: .25em;
+  font-size: .92em;
+}

@@ -1,0 +1,14 @@
+<%= semantic_form_for @character do |f| %>
+  <%= f.inputs do %>
+		<%= f.input :name %>
+		<%= f.input :facebook_id, :label => "Actor's Facebook ID", :required => false %>
+		<%= f.input :description, :required => false %>
+	<% end %>
+  <%= f.buttons do %>
+    <%= f.commit_button %>
+    <li class="cancel">
+      or
+      <%= link_to "Cancel", :back %>
+    </li>
+  <% end %>
+<% end %>

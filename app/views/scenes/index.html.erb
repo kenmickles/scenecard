@@ -1,0 +1,16 @@
+
+<% if @scenes.count > 0 %>
+
+	<ul>
+		<% @scenes.each do |scene| %>
+			<li>
+				<pre><%= scene.inspect %></pre>
+			</li>
+		<% end %>
+	</ul>
+	
+<% else %>
+
+	<p class="none">No scene cards found. <%= link_to "Want to create one?", new_scene_path %></p>
+	
+<% end %>

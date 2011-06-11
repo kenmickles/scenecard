@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scenecard</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <%= csrf_meta_tag %>
+</head>
+<body class="<%= body_class %>">
+	<div id="wrapper">
+		
+		<header>
+			<nav>
+				<%= link_to "Scenes", scenes_path, :class => 'scenes' %> |
+				<%= link_to "Characters", characters_path, :class => 'characters' %> |
+				<%= link_to "Timeline", timeline_path, :class => 'timeline' %>
+			</nav>
+		</header>
+		
+		<div id="flash">
+			<p class="alert"><%= alert %></p>
+			<p class="notice"><%= notice %></p>
+		</div>
+	
+		<div id="content">
+			<%= yield %>
+		</div>
+	</div>
+</body>
+</html>

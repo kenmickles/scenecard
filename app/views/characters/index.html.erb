@@ -1,9 +1,9 @@
 
-<p class="plus-one">
-	<%= link_to "+ New Character", new_character_path, :class => 'new' %>
-</p>
-
 <% if @characters.count > 0 %>
+
+	<p class="plus-one">
+		<%= link_to "+ New Character", new_character_path, :class => 'new' %>
+	</p>
 	
 	<table>
 		<thead>

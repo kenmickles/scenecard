@@ -126,3 +126,99 @@ form fieldset.buttons ol li.cancel {
   margin-left: .25em;
   font-size: .92em;
 }
+
+/* Scene cards */
+
+ul#cards {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul#cards form.scene {
+  width: 500px;
+  height: 300px;
+  background-image: url(http://farm1.static.flickr.com/55/147874576_8a453079f3.jpg);
+  -moz-box-shadow: 2px 2px 6px #aaa;
+  -webkit-box-shadow: 2px 2px 6px #aaa;
+  box-shadow: 2px 2px 6px #aaa;
+  margin-bottom: 25px;
+  position: relative;
+  font-family: courier, "courier new", fixed;
+}
+
+ul#cards input[type="text"],
+ul#cards textarea {
+  color: #000;
+  font: 12pt courier, "courier new", fixed;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  padding: 10px 12px;
+  width: 486px;
+}
+
+ul#cards label {
+  font-weight: bold;
+  color: #333;
+  padding: 10px 12px;
+}
+
+ul#cards #scene_title_input label {
+  display: none;
+}
+
+ul#cards #scene_title_input input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: bold;
+}
+
+ul#cards #scene_description_input label {
+  display: none;
+}
+
+ul#cards #scene_description_input textarea {
+  font-size: 10pt;
+  height: 200px;
+  left: 0;
+  line-height: 1.5em;
+  position: absolute;
+  top: 35px;
+}
+
+ul#cards #scene_location_input label {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+}
+
+body.index.scenes form.scene #scene_location_input input {
+  bottom: 4px;
+  left: 98px;
+  padding: 12px 0;
+  position: absolute;
+  width: 100px;
+}
+
+body.index.scenes form.scene a.delete {
+  display: block;
+  width: 42px;
+  height: 42px;
+  background-image: url(/images/btn_close_x.png);
+  position: absolute;
+  right: -18px;
+  top: -18px;
+  display: none;
+}
+
+body.index.scenes form.scene a.delete span {
+  display: none;
+}
+
+body.index.scenes form.scene:hover a.delete {
+  display: block;
+}

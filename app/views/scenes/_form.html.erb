@@ -1,0 +1,10 @@
+<%= semantic_form_for scene, :remote => true do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :title %>
+		<%= f.input :description, :required => false %>
+		<%= f.input :location, :label => "Location:", :required => false %>
+	<% end %>
+	<% if !scene.id.nil? %>
+		<%= link_to "<span>Delete</span>".html_safe, scene_path(scene), :method => :delete, :confirm => "Really delete this card?", :class => 'delete', :title => "Delete this scene card", :remote => true %>
+	<% end %>	
+<% end %>

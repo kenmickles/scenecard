@@ -1,16 +1,11 @@
 
-<% if @scenes.count > 0 %>
+<ul id="cards">
+	<% @scenes.each do |scene| %>
+		<li><%= render :partial => 'form', :locals => {:scene => scene} %></li>
+	<% end %>
+</ul>
 
-	<ul>
-		<% @scenes.each do |scene| %>
-			<li>
-				<pre><%= scene.inspect %></pre>
-			</li>
-		<% end %>
-	</ul>
-	
-<% else %>
+<p class="plus-one">
+	<a href="#" class="new">+New Card</a>
+</p>
 
-	<p class="none">No scene cards found. <%= link_to "Want to create one?", new_scene_path %></p>
-	
-<% end %>

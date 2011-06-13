@@ -1,6 +1,4 @@
 
-<div class="handle"></div>
-
 <div class="characters {scene_id: <%= scene.id %>}">
 	<ul>
 		<% scene.characters.each do |c| %>
@@ -17,9 +15,11 @@
 	<%= f.inputs do %>
 		<%= f.input :title %>
 		<%= f.input :description, :required => false %>
+		<%= f.input :start_time, :required => false, :label => "Start:", :as => :string %>
+		<%= f.input :end_time, :required => false, :label => "End:", :as => :string %>
 		<%= f.input :location, :label => "Location:", :required => false %>
 	<% end %>
 	<% if !scene.id.nil? %>
-		<%= link_to "<span>Delete</span>".html_safe, scene_path(scene), :method => :delete, :confirm => "Really delete this card?", :class => 'delete', :title => "Delete this scene card", :remote => true %>
+		<%= link_to "<span>Delete</span>".html_safe, scene_path(scene), :method => :delete, :confirm => "Really delete this card?", :class => 'delete', :title => "Delete this card", :remote => true %>
 	<% end %>	
 <% end %>

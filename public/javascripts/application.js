@@ -27,7 +27,9 @@ App = {
 					stop: function(e, ui){
 						App.save_scene_order();
 					}
-				}).disableSelection();
+				});
+				
+				$('#cards :input').add('disabled', 'disabled');
 		
 				// save card data on change
 				$('#cards form :input').change(function(){
@@ -66,6 +68,7 @@ App = {
 					$(this).closest('li').fadeOut();
 				});
 				
+				// edit characters link. show the character form
 				$('#cards .characters a.edit').live('click', function(){
 					var $ul = $(this).closest('.characters').addClass('editable').find('ul');
 					
@@ -85,6 +88,7 @@ App = {
 					return false;
 				});
 				
+				// done editing characters. hide the character form
 				$('#cards .characters a.done').live('click', function(){
 					var $ul = $(this).closest('.characters').removeClass('editable').find('ul');
 					$.each($ul.find('li a:not(.active)'), function(i, a){
@@ -94,6 +98,7 @@ App = {
 					return false;
 				});
 				
+				// add or remove a character from the scene
 				$('#cards .characters.editable li a').live('click', function(){
 					var $this = $(this);
 					$this.toggleClass('active');

@@ -225,14 +225,18 @@ ul#cards textarea {
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  padding: 10px 12px;
+  padding: 0;
   width: 486px;
+  position: absolute;
 }
 
 ul#cards label {
   font-weight: bold;
   color: #333;
-  padding: 10px 12px;
+  text-align: right;
+  width: 75px;  
+  position: absolute;
+  left: 12px;
 }
 
 ul#cards #scene_title_input label {
@@ -240,10 +244,10 @@ ul#cards #scene_title_input label {
 }
 
 ul#cards #scene_title_input input {
-  position: absolute;
   top: 0;
   left: 0;
   font-weight: bold;
+  padding: 10px 12px;  
 }
 
 ul#cards #scene_description_input label {
@@ -252,25 +256,43 @@ ul#cards #scene_description_input label {
 
 ul#cards #scene_description_input textarea {
   font-size: 10pt;
-  height: 200px;
+  height: 166px;
   left: 0;
   line-height: 1.5em;
-  position: absolute;
+  padding: 10px 12px;  
   top: 35px;
 }
 
+ul#cards #scene_start_time_input label {
+  top: 267px;  
+}
+
+ul#cards #scene_start_time_input input {
+  left: 98px;
+  top: 268px; 
+  width: 150px;
+}
+
+ul#cards #scene_end_time_input label {
+  top: 267px;  
+  left: 220px;
+}
+
+ul#cards #scene_end_time_input input {
+  top: 268px;   
+  left: 303px;
+  width: 150px;
+}
+
 ul#cards #scene_location_input label {
-  position: absolute;
-  bottom: 4px;
-  left: 0;
+  top: 241px;  
+  bottom: 14px;
 }
 
 ul#cards #scene_location_input input {
-  bottom: 4px;
   left: 98px;
-  padding: 12px 0;
-  position: absolute;
-  width: 100px;
+  top: 242px;  
+  width: 150px;
 }
 
 ul#cards a.delete {
@@ -279,8 +301,8 @@ ul#cards a.delete {
   height: 42px;
   background-image: url(/images/btn_close_x.png);
   position: absolute;
-  left: 476px;
-  top: -18px;
+  left: 707px;
+  top: -9px;
   display: none;
 }
 
@@ -288,7 +310,7 @@ ul#cards a.delete span {
   display: none;
 }
 
-ul#cards form.scene:hover a.delete {
+ul#cards > li:hover a.delete {
   display: block;
 }
 

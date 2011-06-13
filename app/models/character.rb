@@ -31,7 +31,9 @@ class Character < ActiveRecord::Base
   protected
   
   def fetch_actor_name
-    if !self.facebook_id.blank?
+    if self.facebook_id.blank?
+      self.actor_name = nil
+    else
       require 'net/http'
       http = Net::HTTP.new('graph.facebook.com', 80)
       headers, result = http.get("/#{self.facebook_id}")

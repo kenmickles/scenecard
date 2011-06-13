@@ -15,7 +15,7 @@
 		</p>
 	<% end %>
 	
-	<% if @character.facebook_id %>
+	<% if !@character.facebook_id.blank? %>
 		<p class="actor">
 			<strong>Played by:</strong>
 			<%= link_to @character.actor_name, @character.facebook_url %>

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Scenecard</title>
+  <title>
+		<%= "#{@page_title} |" unless @page_title.blank? %> Scenecard
+	</title>
 	<%= include_stylesheets :application %>
 	<%= include_javascripts :application %>
 	<script type="text/javascript">App.init();</script>

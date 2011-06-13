@@ -119,6 +119,9 @@ App = {
 					
 					return false;
 				});
+				
+				// character name tooltips
+				$('#cards .characters li a img').tipsy({gravity: 's'});
 			}
 	
 		});

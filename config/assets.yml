@@ -6,9 +6,11 @@ javascripts:
     - public/javascripts/rails.js
     - public/javascripts/jquery-ui.min.js
     - public/javascripts/jquery.metadata.js
+    - public/javascripts/jquery.tipsy.js
     - public/javascripts/application.js
     
 stylesheets:
     application:
       - public/stylesheets/_normalize.css
+      - public/stylesheets/tipsy.css
       - public/stylesheets/style.css

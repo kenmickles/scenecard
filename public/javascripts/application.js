@@ -85,6 +85,9 @@ App = {
 						}
 					}
 					
+					// add tooltips to new photos
+					$('#cards .characters li a img').tipsy({gravity: 's'});
+					
 					return false;
 				});
 				

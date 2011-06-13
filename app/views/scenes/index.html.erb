@@ -1,11 +1,14 @@
 
+<nav class="actions">
+	<a href="#" class="new">+ New Card</a>
+</nav>
+
 <ul id="cards">
 	<% @scenes.each do |scene| %>
 		<li><%= render :partial => 'form', :locals => {:scene => scene} %></li>
 	<% end %>
 </ul>
 
-<p class="plus-one">
-	<a href="#" class="new">+New Card</a>
-</p>
-
+<script type="text/javascript">
+CHARACTERS = <%= raw @characters.to_json %>;
+</script>

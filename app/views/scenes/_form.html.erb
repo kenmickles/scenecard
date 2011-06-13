@@ -1,3 +1,18 @@
+
+<div class="handle"></div>
+
+<div class="characters {scene_id: <%= scene.id %>}">
+	<ul>
+		<% scene.characters.each do |c| %>
+			<li><%= link_to image_tag(c.thumbnail_url, :alt => "[Photo of #{c.name}]", :title => c.name), '#', :class => "active {character_id: #{c.id}}" %></li>
+		<% end %>
+	</ul>
+	<div class="clr"></div>
+	<a href="#" class="edit toggle-state">[Edit Characters]</a>	
+	<em class="edit-tip">Click a character's photo to add or remove them from the scene</em>
+	<a href="#" class="done toggle-state">[Done]</a>
+</div>
+
 <%= semantic_form_for scene, :remote => true do |f| %>
 	<%= f.inputs do %>
 		<%= f.input :title %>

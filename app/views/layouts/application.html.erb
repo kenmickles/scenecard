@@ -3,8 +3,8 @@
 <head>
   <title>Scenecard</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-	<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js' %>
+	<%= javascript_include_tag 'jquery.js', 'rails.js', 'jquery.metadata.js', 'jquery-ui.min.js', 'application.js' %>
+	<script type="text/javascript">App.init();</script>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
   <%= csrf_meta_tag %>
 </head>

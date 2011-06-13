@@ -1,4 +1,9 @@
 
+<nav class="actions">
+	<!-- <%= link_to "&larr; Return to list".html_safe, characters_path %> -->
+	<%= link_to "Edit Character", edit_character_path(@character) %>
+</nav>
+
 <section class="character-details" id="character-<%= @character.id %>">
 	<h3><%= @character.name %></h3>
 	
@@ -18,7 +23,3 @@
 	<% end %>
 		
 </section>
-
-<hr />
-<%= link_to "&larr; Return to list".html_safe, characters_path %> |
-<%= link_to "Edit Character", edit_character_path(@character) %>

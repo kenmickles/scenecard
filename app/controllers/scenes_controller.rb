@@ -1,6 +1,9 @@
 class ScenesController < ApplicationController
   def index
     @scenes = Scene.all(:order => 'weight')
+    @characters = Character.all(:order => 'name').collect do |c|
+      {:id => c.id, :name => c.name, :actor_name => c.actor_name, :thumbnail_url => c.thumbnail_url}
+    end
   end
   
   def show
@@ -52,6 +55,22 @@ class ScenesController < ApplicationController
       @scene = Scene.find(id)
       @scene.update_attribute(:weight, (i*100))
     end
+    
+    render :json => {:success => true}
+  end
+  
+  def add_character
+    @scene = Scene.find(params[:id])    
+    @character = Character.find(params[:character_id])
+    @scene.characters << @character
+    
+    render :json => {:success => true}
+  end
+  
+  def remove_character
+    @scene = Scene.find(params[:id])    
+    @character = Character.find(params[:character_id])
+    @scene.characters.delete(@character)
     
     render :json => {:success => true}
   end

@@ -1,11 +1,20 @@
 body {
   font-family: helvetica, arial, sans-serif;
+  font-size: 11pt;
 }
 
-body.scenes nav a.scenes,
-body.characters nav a.characters,
-body.timeline nav a.timeline {
-  font-weight: bold;
+a, a:visited, a:active {
+  color: #569ae6;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ff9a00;
+}
+
+.clr {
+  clear: both;
+  display: block;
 }
 
 #wrapper {
@@ -14,7 +23,60 @@ body.timeline nav a.timeline {
 }
 
 header {
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
+  padding-bottom: .25em;
+  border-bottom: 2px solid #444;
+}
+
+header nav a,
+header nav a:visited,
+header nav a:active {
+  color: #000;
+  text-decoration: underline;
+  font-weight: bold;
+  padding: 2px;
+}
+
+header nav a:hover {
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+}
+
+body.scenes nav a.scenes,
+body.scenes nav a.scenes:hover,
+body.characters nav a.characters,
+body.characters nav a.characters:hover,
+body.timeline nav a.timeline,
+body.timeline nav a.timeline:hover {
+  color: #444;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+#content nav.actions {
+  margin-bottom: 2.5em;
+}
+
+#content nav.actions a {
+  background-color: green;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  box-shadow: 0 1px 0 #000000;
+  -moz-box-shadow: 0 1px 0 #000;
+  -webkit-box-shadow: 0 1px 0 #000;
+  color: #FFFFFF;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 9pt;
+  text-shadow: 0 1px 0 #000;
+  margin-right: .5em;
+}
+
+#content nav.actions a:active {
+  position: relative;
+  top: 1px;
 }
 
 h3 {
@@ -135,15 +197,22 @@ ul#cards {
   padding: 0;
 }
 
+ul#cards > li {
+  margin: 0 0 2.5em 0;
+  position: relative;
+  height: 300px;
+}
+
 ul#cards form.scene {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 500px;
   height: 300px;
   background-image: url(http://farm1.static.flickr.com/55/147874576_8a453079f3.jpg);
   -moz-box-shadow: 2px 2px 6px #aaa;
   -webkit-box-shadow: 2px 2px 6px #aaa;
   box-shadow: 2px 2px 6px #aaa;
-  margin-bottom: 25px;
-  position: relative;
   font-family: courier, "courier new", fixed;
 }
 
@@ -196,7 +265,7 @@ ul#cards #scene_location_input label {
   left: 0;
 }
 
-body.index.scenes form.scene #scene_location_input input {
+ul#cards #scene_location_input input {
   bottom: 4px;
   left: 98px;
   padding: 12px 0;
@@ -204,21 +273,108 @@ body.index.scenes form.scene #scene_location_input input {
   width: 100px;
 }
 
-body.index.scenes form.scene a.delete {
+ul#cards a.delete {
   display: block;
   width: 42px;
   height: 42px;
   background-image: url(/images/btn_close_x.png);
   position: absolute;
-  right: -18px;
+  left: 476px;
   top: -18px;
   display: none;
 }
 
-body.index.scenes form.scene a.delete span {
+ul#cards a.delete span {
   display: none;
 }
 
-body.index.scenes form.scene:hover a.delete {
+ul#cards form.scene:hover a.delete {
   display: block;
 }
+
+ul#cards .characters {
+  background-image: url("/images/Wrinkled_Notebook_Paper___3_by_djsoundwav.jpg");
+  background-position: -120px -500px;
+  left: 500px;
+  padding: 1em;
+  position: absolute;
+  top: 10px;
+  width: 200px;
+  height: 250px;
+}
+
+ul#cards .characters.editable {
+  background-color: #FFFCAF;
+  background-image: none;
+}
+
+ul#cards .characters a.toggle-state {
+  bottom: 9px;
+  font-size: 0.92em;
+  left: 16px;
+  position: absolute;
+}
+
+ul#cards .characters a.done {
+  display: none;
+}
+
+ul#cards .characters.editable a.edit {
+  display:none;
+}
+
+ul#cards .characters.editable a.done {
+  display: block;
+}
+
+ul#cards .characters .edit-tip {
+  display: none;
+}
+
+ul#cards .characters.editable .edit-tip {
+  bottom: 31px;
+  display: block;
+  font-size: 0.82em;
+  left: 16px;
+  padding-right: 10px;
+  position: absolute;
+}
+
+ul#cards .characters ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 224px;
+  overflow: auto;
+}
+
+ul#cards .characters.editable ul {
+  height: 200px;
+}
+
+ul#cards .characters li {
+  float: left;
+}
+
+ul#cards .characters li img {
+  width: 35px;
+  padding: 3px;
+}
+
+ul#cards .characters li a {
+  opacity: .75;
+}
+
+ul#cards .characters li a.active {
+  opacity: 1;
+}
+
+/*ul#cards li .handle {
+  position: absolute;
+  left: -50px;
+  top: 50px;
+  background-image: url("/images/Wrinkled_Notebook_Paper___3_by_djsoundwav.jpg");
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 100px;
+}*/

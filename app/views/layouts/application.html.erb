@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Scenecard</title>
-  <%= stylesheet_link_tag :all %>
-	<%= javascript_include_tag 'jquery.js', 'rails.js', 'jquery.metadata.js', 'jquery-ui.min.js', 'application.js' %>
+	<%= include_stylesheets :application %>
+	<%= include_javascripts :application %>
 	<script type="text/javascript">App.init();</script>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
   <%= csrf_meta_tag %>

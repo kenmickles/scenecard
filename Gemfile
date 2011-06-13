@@ -33,3 +33,4 @@ gem 'sqlite3'
 # app gems
 gem 'mysql'
 gem 'formtastic'
+gem 'jammit'

@@ -1,0 +1,14 @@
+package_assets: on
+
+javascripts:
+  application:
+    - public/javascripts/jquery.js
+    - public/javascripts/rails.js
+    - public/javascripts/jquery-ui.min.js
+    - public/javascripts/jquery.metadata.js
+    - public/javascripts/application.js
+    
+stylesheets:
+    application:
+      - public/stylesheets/_normalize.css
+      - public/stylesheets/style.css

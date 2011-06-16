@@ -12,8 +12,8 @@ class ScenesController < ApplicationController
   end
   
   def new
-    @page_title = "New Scene"
-    @scene = Scene.create!({:title => "New Scene"})
+    @page_title = params[:title] || "New Scene"
+    @scene = Scene.create!({:title => @page_title})
     render :layout => false
   end
   

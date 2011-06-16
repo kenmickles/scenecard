@@ -1,14 +1,12 @@
 
 <div class="characters {scene_id: <%= scene.id %>}">
 	<ul>
-		<% scene.characters.each do |c| %>
-			<li><%= link_to image_tag(c.thumbnail_url, :alt => "[Photo of #{c.name}]", :title => c.name), '#', :class => "active {character_id: #{c.id}}" %></li>
+		<% Character.all(:order => 'name').each do |c| %>
+			<li><%= link_to image_tag(c.thumbnail_url, :alt => "[Photo of #{c.name}]", :title => c.name), '#', :class => "#{scene.characters.include?(c) ? 'active' : ''} {character_id: #{c.id}}" %></li>
 		<% end %>
 	</ul>
 	<div class="clr"></div>
-	<a href="#" class="edit toggle-state">[Edit Characters]</a>	
-	<em class="edit-tip">Click a character's photo to add or remove them from the scene</em>
-	<a href="#" class="done toggle-state">[Done]</a>
+	<p class="tip">Click a character's photo to add or remove them from the scene</p>
 </div>
 
 <%= semantic_form_for scene, :remote => true do |f| %>
@@ -19,7 +17,6 @@
 		<%= f.input :end_time, :required => false, :label => "End:", :as => :string %>
 		<%= f.input :location, :label => "Location:", :required => false %>
 	<% end %>
-	<% if !scene.id.nil? %>
-		<%= link_to "<span>Delete</span>".html_safe, scene_path(scene), :method => :delete, :confirm => "Really delete this card?", :class => 'delete', :title => "Delete this card", :remote => true %>
-	<% end %>	
 <% end %>
+
+

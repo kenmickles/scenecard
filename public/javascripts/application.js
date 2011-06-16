@@ -5,10 +5,10 @@ App = {
 	save_scene_order: function(){
 		var scenes = [];
 
-		$.each($('#cards form'), function(i, form){
-			scenes.push($(form).attr('id').replace(/^edit_scene_/, ''));
+		$.each($('#cards .card'), function(i, div){
+			scenes.push($(div).attr('id').replace(/^scene-/, ''));
 		});
-
+		
 		$.post('/scenes/reorder', {scenes: scenes}, function(data){
 			// console.log(data);
 		}, 'json');
@@ -29,6 +29,34 @@ App = {
 					}
 				});
 				
+				// new card link
+				$('a.new').click(function(){
+					var title = prompt('Scene Title:', 'New Scene');
+					$.get('/scenes/new', {title: title}, function(html){
+						$('#cards').append('<li>' + html + '</li>');
+						App.save_scene_order();
+					});
+					return false;
+				});
+		
+				// delete card link. this is already remoted, so we just need to handle the UI
+				$('a.delete').live('click', function(){
+					$(this).closest('li').fadeOut();
+				});
+				
+				$('#cards .card').live('dblclick', function(){
+					var $card = $(this);
+					$.get('/scenes/' + $card.attr('id').replace(/^scene-/, '') + '/edit', function(html){
+						$('body').append('<div id="overlay"><div class="backdrop"></div><div class="card">' + html + '</div></div>');
+						var left = ($(window).width() - $('#overlay .card').width()) / 2;
+						var top = 50;
+						$('#overlay .card').css({left: left, top: top});
+					});
+				});
+				
+				
+			//--				
+				
 				$('#cards :input').add('disabled', 'disabled');
 		
 				// save card data on change
@@ -45,27 +73,6 @@ App = {
 					}, 'json');
 			
 					return false;
-				});
-		
-				// make labels work even though we're wrongly using multiple IDs on one page
-				$('form.scene label').click(function(){
-					$(this).siblings(':input').focus();
-					return false;
-				});
-		
-				// new card link
-				$('a.new').click(function(){
-					$.get('/scenes/new', function(html){
-						$('#cards').prepend('<li>' + html + '</li>');
-						$('#cards form:first input[type="text"]:first').focus().select();
-						App.save_scene_order();
-					});
-					return false;
-				});
-		
-				// delete card link. this is already remoted, so we just need to handle the UI
-				$('a.delete').live('click', function(){
-					$(this).closest('li').fadeOut();
 				});
 				
 				// edit characters link. show the character form

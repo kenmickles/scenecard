@@ -1,0 +1,35 @@
+
+<div class="card" id="scene-<%= scene.id %>">
+
+	<h4 class="title"><%= scene.title %></h4>
+
+	<% if !scene.description.blank? %>
+		<p class="description">
+			<%= excerpt(scene.description, ' ', :radius => 220) %>
+		</p>
+	<% end %>
+
+	<% if !scene.start_time.blank? %>
+		<p class="start_time">
+			<label>Starts:</label>
+			<span class="value"><%= scene.start_time.to_s(:short) %></span>
+		</p>
+	<% end %>
+
+	<% if !scene.start_time.blank? %>
+		<p class="end_time">
+			<label>Ends:</label>
+			<span class="value"><%= scene.end_time.to_s(:short) %></span>
+		</p>
+	<% end %>
+
+	<% if !scene.location.blank? %>
+		<p class="location">
+			<label>Location:</label>
+			<span class="value"><%= scene.location %></span>
+		</p>
+	<% end %>
+
+	<%= link_to "<span>Delete</span>".html_safe, scene_path(scene), :method => :delete, :confirm => "Really delete this card?", :class => 'delete', :title => "Delete this card", :remote => true %>
+	
+</div>

@@ -5,7 +5,9 @@
 
 <ul id="cards">
 	<% @scenes.each do |scene| %>
-		<li><%= render :partial => 'form', :locals => {:scene => scene} %></li>
+		<li>
+			<%= render :partial => 'card', :locals => {:scene => scene} %>
+		</li>
 	<% end %>
 </ul>
 

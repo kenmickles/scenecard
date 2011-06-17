@@ -14,9 +14,22 @@ App = {
 		}, 'json');
 	},
 	
+	hide_overlay: function(){
+		$('#overlay').fadeOut('fast', function(){
+			$(this).remove();
+		});
+	},
+	
 	init: function(){
 		$(document).ready(function(){	
 			var $body = $('body');
+			
+			// hide popup when escape key is pressed
+			$(document).keyup(function(e) {
+			  if ( e.keyCode == 27 && $('#overlay').is(':visible') ) { 
+					App.hide_overlay();
+				}
+			});			
 	
 		//-- Scenes
 
@@ -44,28 +57,38 @@ App = {
 					$(this).closest('li').fadeOut();
 				});
 				
+				// double click a card to open the edit form
 				$('#cards .card').live('dblclick', function(){
-					var $card = $(this);
-					$.get('/scenes/' + $card.attr('id').replace(/^scene-/, '') + '/edit', function(html){
+					$.get('/scenes/' + $(this).attr('id').replace(/^scene-/, '') + '/edit', function(html){
+						// attach form
 						$('body').append('<div id="overlay"><div class="backdrop"></div><div class="card">' + html + '</div></div>');
+						
+						// add close button
+						// $('#overlay form').prepend('<a class="x close" href="#" title="Close this form"><span>x</span></a>');						
+						
+						// center form
 						var left = ($(window).width() - $('#overlay .card').width()) / 2;
-						var top = 50;
+						var top = $(window).scrollTop() + 100;
 						$('#overlay .card').css({left: left, top: top});
+						
+						// add character name tooltips
+						$('#overlay .characters li a img').tipsy({gravity: 's'});						
 					});
 				});
 				
-				
-			//--				
-				
-				$('#cards :input').add('disabled', 'disabled');
-		
+				// .close links close the overlay
+				$('#overlay a.close').live('click', function(){
+					App.hide_overlay();
+					return false;
+				});
+			
 				// save card data on change
-				$('#cards form :input').change(function(){
+				$('#overlay form :input').live('change', function(){
 					$(this).closest('form').submit();
 				});
 		
 				// submit the card form via ajax
-				$('#cards form').submit(function(){
+				$('#overlay form').live('submit', function(){
 					var $form = $(this);
 			
 					$.post($form.attr('action'), $form.serialize(), function(data){
@@ -74,42 +97,9 @@ App = {
 			
 					return false;
 				});
-				
-				// edit characters link. show the character form
-				$('#cards .characters a.edit').live('click', function(){
-					var $ul = $(this).closest('.characters').addClass('editable').find('ul');
-					
-					var active_ids = [];
-					$.each($ul.find('li a'), function(i, a){
-						active_ids.push($(a).metadata().character_id);
-					});
-
-					for ( var i = 0; i < CHARACTERS.length; i++ ) {
-						var c = CHARACTERS[i];
-						
-						if ( $.inArray(c.id, active_ids) === -1 ) {
-							$ul.append('<li><a href="#" class="{character_id: ' + c.id + '}"><img src="' + c.thumbnail_url + '" alt="[Photo of ' + c.name + ']" title="' + c.name + '" /></a></ul>');
-						}
-					}
-					
-					// add tooltips to new photos
-					$('#cards .characters li a img').tipsy({gravity: 's'});
-					
-					return false;
-				});
-				
-				// done editing characters. hide the character form
-				$('#cards .characters a.done').live('click', function(){
-					var $ul = $(this).closest('.characters').removeClass('editable').find('ul');
-					$.each($ul.find('li a:not(.active)'), function(i, a){
-						$(this).closest('li').remove();
-					});
-					
-					return false;
-				});
-				
+								
 				// add or remove a character from the scene
-				$('#cards .characters.editable li a').live('click', function(){
+				$('#overlay .characters li a').live('click', function(){
 					var $this = $(this);
 					$this.toggleClass('active');
 										
@@ -129,9 +119,6 @@ App = {
 					
 					return false;
 				});
-				
-				// character name tooltips
-				$('#cards .characters li a img').tipsy({gravity: 's'});
 			}
 	
 		});

@@ -1,9 +1,6 @@
 class ScenesController < ApplicationController
   def index
     @scenes = Scene.all(:order => 'weight')
-    @characters = Character.all(:order => 'name').collect do |c|
-      {:id => c.id, :name => c.name, :actor_name => c.actor_name, :thumbnail_url => c.thumbnail_url}
-    end
   end
   
   def show

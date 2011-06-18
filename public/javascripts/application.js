@@ -81,6 +81,31 @@ App = {
 					App.hide_overlay();
 					return false;
 				});
+				
+				// change card title as you type
+				$('input#scene_title').live('keyup', function(){
+					var $this = $(this);
+					var scene_id = $this.closest('form').attr('id').replace(/^edit_scene_/, '');
+					$('#scene-' + scene_id + ' .title').text($this.val());
+				});
+				
+				// change card description as you type
+				$('textarea#scene_description').live('keyup', function(){
+					var $this = $(this);
+					var scene_id = $this.closest('form').attr('id').replace(/^edit_scene_/, '');
+					var excerpt = $this.val().substr(0, 220);
+					if ( excerpt.length < $this.val().length ) {
+						excerpt += '...';
+					}
+					$('#scene-' + scene_id + ' .description').text(excerpt);
+				});
+				
+				// change card location as you type
+				$('input#scene_location').live('keyup', function(){
+					var $this = $(this);
+					var scene_id = $this.closest('form').attr('id').replace(/^edit_scene_/, '');
+					$('#scene-' + scene_id + ' .location .value').text($this.val());
+				});	
 			
 				// save card data on change
 				$('#overlay form :input').live('change', function(){

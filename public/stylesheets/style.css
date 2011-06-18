@@ -249,11 +249,13 @@ ul#cards .card p label {
 ul#cards .card .start_time {
   left: 9px;
   top: 131px;
+  display: none;
 }
 
 ul#cards .card .end_time {
   left: 164px;
   top: 131px;
+  display: none;
 }
 
 ul#cards .card .location {

@@ -49,6 +49,9 @@ App = {
 			
 	init: function(){
 		$(document).ready(function(){	
+			// disable ajax caching
+  		$.ajaxSetup({ cache: false });
+
 			var $body = $('body');
 			
 			// hide popup when escape key is pressed

@@ -62,9 +62,16 @@ App = {
 				// new card link
 				$('a.new').click(function(){
 					var title = prompt('Scene Title:', 'New Scene');
+					
 					$.get('/scenes/new', {title: title}, function(html){
+						// add card to list
 						$('#cards').append('<li>' + html + '</li>');
+						
+						// update the scene weights
 						App.save_scene_order();
+						
+						// scroll to new card
+						$('html,body').animate({scrollTop: $('#cards li:last').offset().top},'slow');						
 					});
 					return false;
 				});
@@ -76,6 +83,9 @@ App = {
 				
 				// double click a card to open the edit form
 				$('#cards .card').live('dblclick', function(){
+					// make sure no other overlays exist. this can result from rapid double clicking
+					$('#overlay').remove();
+					
 					$.get('/scenes/' + $(this).attr('id').replace(/^scene-/, '') + '/edit', function(html){
 						// attach form
 						$('body').append('<div id="overlay"><div class="backdrop"></div><div class="card">' + html + '</div></div>');

@@ -95,6 +95,9 @@ App = {
 						$('#overlay form :input').change(function(){
 							App.save_scene();
 						});
+						
+						// focus on the description field
+						$('#scene_description').focus();
 					});
 				});
 				

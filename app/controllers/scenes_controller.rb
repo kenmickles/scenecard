@@ -4,8 +4,9 @@ class ScenesController < ApplicationController
   end
   
   def show
-    @character = Character.find(params[:id])
-    @page_title = @character.name
+    @scene = Scene.find(params[:id])
+    @page_title = @scene.title
+    render :layout => false
   end
   
   def new

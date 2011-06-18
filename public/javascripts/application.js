@@ -14,52 +14,12 @@ App = {
 		}, 'json');
 	},
 	
-	// update_card: function(callback) {
-	// 	var $form = $('#overlay form');
-	// 	var scene_id = $form.attr('id').replace(/^edit_scene_/, '');
-	// 
-	// 	var title = $('#scene_title').val();
-	// 	$('#scene-' + scene_id + ' .title').text(title).attr('title', title);
-	// 	
-	// 	var location = $('#scene_location').val();
-	// 	$('#scene-' + scene_id + ' .location .value').text(location).attr('title', location);
-	// 
-	// 	var description = $('#scene_description').val();
-	// 	if ( description.length > 225 ) {
-	// 		description = description.substr(0, 220) + '...';
-	// 	}
-	// 	$('#scene-' + scene_id + ' .description').text(description);
-	// },
-	
-	// hide_overlay: function(){
-	// 	App.update_card();
-	// 	App.save_scene(function());		
-	// 	
-	// 	$('#overlay').fadeOut('fast', function(){
-	// 		$(this).remove();
-	// 	});
-	// },
+	update_card: function(scene_id) {
+		$('#scene-' + scene_id).load('/scenes/' + scene_id);
+	},
 	
 	hide_overlay: function(){
-		var $form = $('#overlay form');
-		var scene_id = $form.attr('id').replace(/^edit_scene_/, '');
-
-		var title = $('#scene_title').val();
-		$('#scene-' + scene_id + ' .title').text(title).attr('title', title);
-		
-		var location = $('#scene_location').val();
-		$('#scene-' + scene_id + ' .location .value').text(location).attr('title', location);
-
-		var description = $('#scene_description').val();
-		if ( description.length > 225 ) {
-			description = description.substr(0, 220) + '...';
-		}
-		$('#scene-' + scene_id + ' .description').text(description);
-		
-		var $form = $('#overlay form.scene');
-		$.post($form.attr('action'), $form.serialize(), function(data){
-			// console.log(data);
-		}, 'json');
+		App.save_scene();		
 		
 		$('#overlay').fadeOut('fast', function(){
 			$(this).remove();
@@ -68,8 +28,9 @@ App = {
 	
 	save_scene: function() {
 		var $form = $('#overlay form.scene');
+		var scene_id = $form.attr('id').replace(/^edit_scene_/, '');
 		$.post($form.attr('action'), $form.serialize(), function(data){
-			// console.log(data);
+			App.update_card(scene_id)
 		}, 'json');
 	},
 			

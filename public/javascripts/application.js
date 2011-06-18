@@ -87,11 +87,11 @@ App = {
 				});
 				
 				// double click a card to open the edit form
-				$('#cards .card').live('dblclick', function(){
-					// make sure no other overlays exist. this can result from rapid double clicking
-					$('#overlay').remove();
-					
+				$('#cards .card').live('dblclick', function(){					
 					$.get('/scenes/' + $(this).attr('id').replace(/^scene-/, '') + '/edit', function(html){
+						// make sure no other overlays exist. this can result from rapid double clicking
+						$('#overlay').remove();						
+						
 						// attach form
 						$('body').append('<div id="overlay"><div class="backdrop"></div><div class="card">' + html + '</div></div>');
 						

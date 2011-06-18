@@ -19,8 +19,13 @@ App = {
 	},
 	
 	hide_overlay: function(){
+		// save form data
 		App.save_scene();		
 		
+		// remove any lingering tooltips
+		$('.tipsy').remove();
+		
+		// fade out overlay
 		$('#overlay').fadeOut('fast', function(){
 			$(this).remove();
 		});

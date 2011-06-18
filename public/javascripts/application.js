@@ -14,55 +14,38 @@ App = {
 		}, 'json');
 	},
 	
+	update_card: function() {
+		var $form = $('#overlay form');
+		var scene_id = $form.attr('id').replace(/^edit_scene_/, '');
+
+		$('#scene-' + scene_id + ' .title').text($('#scene_title').val());
+		
+		var location = $('#scene_location').val();
+		$('#scene-' + scene_id + ' .location .value').text(location).attr('title', location);
+
+		var description = $('#scene_description').val();
+		if ( description.length > 225 ) {
+			description = description.substr(0, 220) + '...';
+		}
+		$('#scene-' + scene_id + ' .description').text(description);
+	},
+	
 	hide_overlay: function(){
+		App.update_card();
+		App.save_scene();		
+		
 		$('#overlay').fadeOut('fast', function(){
 			$(this).remove();
 		});
 	},
 	
-	init_form: function() {
-		// change card title as you type
-		$('input#scene_title').keyup(function(){
-			var $this = $(this);
-			var scene_id = $this.closest('form').attr('id').replace(/^edit_scene_/, '');
-			$('#scene-' + scene_id + ' .title').text($this.val());
-		});
-		
-		// change card description as you type
-		$('textarea#scene_description').keyup(function(){
-			var $this = $(this);
-			var scene_id = $this.closest('form').attr('id').replace(/^edit_scene_/, '');
-			var excerpt = $this.val().substr(0, 220);
-			if ( excerpt.length < $this.val().length ) {
-				excerpt += '...';
-			}
-			$('#scene-' + scene_id + ' .description').text(excerpt);
-		});
-		
-		// change card location as you type
-		$('input#scene_location').keyup(function(){
-			var $this = $(this);
-			var scene_id = $this.closest('form').attr('id').replace(/^edit_scene_/, '');
-			$('#scene-' + scene_id + ' .location .value').text($this.val());
-		});	
-	
-		// save card data on change
-		$('#overlay form :input').keydown(function(){
-			$(this).closest('form').submit();
-		});
-
-		// submit the card form via ajax
-		$('#overlay form').submit(function(){
-			var $form = $(this);
-	
-			$.post($form.attr('action'), $form.serialize(), function(data){
-				// console.log(data);
-			}, 'json');
-	
-			return false;
-		});
+	save_scene: function() {
+		var $form = $('#overlay form.scene');
+		$.post($form.attr('action'), $form.serialize(), function(data){
+			// console.log(data);
+		}, 'json');
 	},
-	
+			
 	init: function(){
 		$(document).ready(function(){	
 			var $body = $('body');
@@ -115,10 +98,12 @@ App = {
 						$('#overlay .card').css({left: left, top: top});
 						
 						// add character name tooltips
-						$('#overlay .characters li a img').tipsy({gravity: 's'});	
+						$('#overlay .characters li a img').tipsy({gravity: 's'});					
 						
-						// initialize form events
-						App.init_form();					
+						// save card data on change
+						$('#overlay form :input').change(function(){
+							App.save_scene();
+						});
 					});
 				});
 				
@@ -126,7 +111,7 @@ App = {
 				$('#overlay a.close').live('click', function(){
 					App.hide_overlay();
 					return false;
-				});
+				});			
 								
 				// add or remove a character from the scene
 				$('#overlay .characters li a').live('click', function(){

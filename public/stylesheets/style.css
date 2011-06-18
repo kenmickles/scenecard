@@ -18,7 +18,7 @@ a:hover {
 }
 
 #wrapper {
-  margin: 3em;
+  margin: 30px;
 }
 
 header {
@@ -192,13 +192,13 @@ form fieldset.buttons ol li.cancel {
 
 ul#cards {
   list-style-type: none;
-  margin: 0 0 0 -30px;
+  margin: 0 0 0 -25px;
   padding: 0;
 }
 
 ul#cards li {
   float: left;
-  margin: 15px 0 15px 30px;
+  margin: 15px 0 15px 25px;
 }
   
 ul#cards .card {

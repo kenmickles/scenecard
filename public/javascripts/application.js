@@ -18,7 +18,8 @@ App = {
 		var $form = $('#overlay form');
 		var scene_id = $form.attr('id').replace(/^edit_scene_/, '');
 
-		$('#scene-' + scene_id + ' .title').text($('#scene_title').val());
+		var title = $('#scene_title').val();
+		$('#scene-' + scene_id + ' .title').text(title).attr('title', title);
 		
 		var location = $('#scene_location').val();
 		$('#scene-' + scene_id + ' .location .value').text(location).attr('title', location);
@@ -39,7 +40,7 @@ App = {
 		});
 	},
 	
-	save_scene: function() {
+	save_scene: function(callback) {
 		var $form = $('#overlay form.scene');
 		$.post($form.attr('action'), $form.serialize(), function(data){
 			// console.log(data);

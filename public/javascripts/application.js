@@ -36,7 +36,7 @@ App = {
 		App.save_scene();		
 		
 		$('#overlay').fadeOut('fast', function(){
-			$(this).remove();
+			//$(this).remove();
 		});
 	},
 	
@@ -89,6 +89,8 @@ App = {
 				
 				// double click a card to open the edit form
 				$('#cards .card').live('dblclick', function(){
+					$('#overlay').remove();
+					
 					$.get('/scenes/' + $(this).attr('id').replace(/^scene-/, '') + '/edit', function(html){
 						// attach form
 						$('body').append('<div id="overlay"><div class="backdrop"></div><div class="card">' + html + '</div></div>');

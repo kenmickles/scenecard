@@ -1,5 +1,5 @@
 class Character < ActiveRecord::Base
-  has_and_belongs_to_many :scenes
+  has_and_belongs_to_many :scenes, :order => :weight
   validates :name, :presence => true
   
   before_save :fetch_actor_name

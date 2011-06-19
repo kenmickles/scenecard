@@ -21,5 +21,29 @@
 			<%= link_to @character.actor_name, @character.facebook_url %>
 		</p>
 	<% end %>
-		
+	
 </section>
+
+<% if @character.scenes.length > 0 %>
+	<section class="scenes">
+		<h4>Featured in <%= pluralize @character.scenes.length, 'scene' %>:</h4>
+		<table>
+			<thead>
+				<tr>
+					<th>Scene</th>
+					<th>Location</th>
+					<th>Characters</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @character.scenes.each do |scene| %>
+					<tr class="<%= cycle('odd', 'even') %>">
+						<td class="title"><%= scene.title %></td>
+						<td><%= scene.location %></td>
+						<td><%= scene.characters.collect{|c| link_to c.name, character_path(c.id) }.to_sentence.html_safe %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>		
+	</section>
+<% end %>

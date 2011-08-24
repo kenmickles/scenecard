@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110611195909) do
+ActiveRecord::Schema.define(:version => 20110824221437) do
 
   create_table "characters", :force => true do |t|
     t.string   "name",        :null => false
@@ -35,16 +35,27 @@ ActiveRecord::Schema.define(:version => 20110611195909) do
   add_index "characters_scenes", ["scene_id"], :name => "index_characters_scenes_on_scene_id"
 
   create_table "scenes", :force => true do |t|
-    t.string   "title",                      :null => false
+    t.string   "title",                          :null => false
     t.text     "description"
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "location"
-    t.integer  "weight",      :default => 0, :null => false
+    t.integer  "weight",      :default => 0,     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "writer_id"
+    t.boolean  "completed",   :default => false
+  end
+
+  add_index "scenes", ["weight"], :name => "index_scenes_on_weight"
+
+  create_table "writers", :force => true do |t|
+    t.string   "name",        :null => false
+    t.string   "facebook_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "scenes", ["weight"], :name => "index_scenes_on_weight"
+  add_index "writers", ["name"], :name => "index_writers_on_name"
 
 end

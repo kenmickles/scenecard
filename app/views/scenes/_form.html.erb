@@ -13,8 +13,10 @@
 	<%= f.inputs do %>
 		<%= f.input :title %>
 		<%= f.input :description, :required => false %>
-		<%= f.input :start_time, :required => false, :label => "Start:", :as => :string %>
-		<%= f.input :end_time, :required => false, :label => "End:", :as => :string %>
+		<%= f.input :writer, :required => false, :label => "Assigned to:" %>
+		<%= f.input :completed, :required => false, :label => "Completed?" %>		
+		<!-- <%= f.input :start_time, :required => false, :label => "Start:", :as => :string %>
+		<%= f.input :end_time, :required => false, :label => "End:", :as => :string %> -->
 		<%= f.input :location, :label => "Location:", :required => false %>
 	<% end %>
 <% end %>

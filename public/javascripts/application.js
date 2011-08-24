@@ -15,7 +15,7 @@ App = {
 	},
 	
 	update_card: function(scene_id) {
-		$('#scene-' + scene_id).load('/scenes/' + scene_id);
+		$('#scene-' + scene_id).parent().load('/scenes/' + scene_id);
 	},
 	
 	hide_overlay: function(){

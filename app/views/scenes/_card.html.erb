@@ -1,5 +1,5 @@
 
-<div class="card" id="scene-<%= scene.id %>">
+<div class="card <%= 'completed' unless !scene.completed? %>" id="scene-<%= scene.id %>">
 
 	<h4 class="title" title="<%= scene.title %>"><%= scene.title %></h4>
 
@@ -28,6 +28,10 @@
 			<label>Location:</label>
 			<span class="value" title="<%= scene.location %>"><%= scene.location %></span>
 		</p>
+	<% end %>
+	
+	<% if !scene.writer.nil? %>
+		<%= image_tag scene.writer.thumbnail_url, :alt => scene.writer.name, :class => "writer" %>
 	<% end %>
 
 	<%= link_to "<span>Delete</span>".html_safe, scene_path(scene), :method => :delete, :confirm => "Really delete this card?", :class => 'delete', :title => "Delete this card", :remote => true %>

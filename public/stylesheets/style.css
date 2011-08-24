@@ -213,6 +213,10 @@ ul#cards .card {
   font-size: 10pt;
 }
 
+ul#cards .card.completed {
+  opacity: .5;
+}
+
 ul#cards .card .title {
   position: absolute;
   left: 0;
@@ -286,6 +290,14 @@ ul#cards .card:hover a.delete {
   display: block;
 }
 
+ul#cards .card img.writer {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 /* Scene editor overlay */
 
 #overlay .backdrop {
@@ -337,7 +349,8 @@ ul#cards .card:hover a.delete {
 }
 
 #overlay .card input[type="text"],
-#overlay .card textarea {
+#overlay .card textarea,
+#overlay .card select {
   color: #000;
   font: 12pt courier, "courier new", fixed;
   background-color: transparent;
@@ -350,6 +363,10 @@ ul#cards .card:hover a.delete {
   position: absolute;
 }
 
+#overlay .card select {
+  background-color: #fff;
+}
+
 #overlay .card input[type="text"]:focus,
 #overlay .card textarea:focus {
   outline: none;
@@ -359,9 +376,9 @@ ul#cards .card:hover a.delete {
   font-weight: bold;
   color: #333;
   text-align: right;
-  width: 75px;  
+  width: 100px;  
   position: absolute;
-  left: 12px;
+  left: 25px;
 }
 
 #overlay .card #scene_title_input label {
@@ -388,7 +405,7 @@ ul#cards .card:hover a.delete {
   top: 44px;
 }
 
-#overlay .card #scene_start_time_input label {
+/*#overlay .card #scene_start_time_input label {
   top: 345px;  
 }
 
@@ -408,13 +425,32 @@ ul#cards .card:hover a.delete {
   top: 345px;
   width: 185px;
 }
+*/
+
+#overlay .card #scene_writer_input label {
+  top: 345px;  
+}
+#overlay .card #scene_writer_input select {
+  left: 138px;
+  top: 345px; 
+  width: auto;
+}
+
+#overlay .card #scene_completed_input label {
+  top: 345px;  
+  left: 400px;
+  width: auto;
+}
+#overlay .card #scene_completed_input label input {
+  margin-right: 6px;
+}
 
 #overlay .card #scene_location_input label {
   top: 312px;  
 }
 
 #overlay .card #scene_location_input input {
-  left: 98px;
+  left: 138px;
   top: 313px;  
   width: 525px;
 }

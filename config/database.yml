@@ -5,7 +5,7 @@ development:
   database: scenecard_dev
   hostname: localhost
   username: root
-  password: root
+  password: 
   pool: 5
   timeout: 5000
 

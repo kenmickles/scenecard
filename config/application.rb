@@ -40,5 +40,6 @@ module Scenecard
     config.filter_parameters += [:password]
     
     config.action_view.javascript_expansions[:defaults] = %w(jquery rails)    
+    ActionController::Base.config.relative_url_root = ''
   end
 end

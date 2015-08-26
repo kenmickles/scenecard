@@ -23,8 +23,8 @@
 					</td>
 					<td class="name"><%= c.name %></td>
 					<td class="actor">
-						<% if !c.facebook_id.blank? %>
-							<%= link_to c.actor_name, c.facebook_url %>
+						<% if c.actor_name.present? %>
+							<%= c.actor_name %>
 						<% else %>
 							<em>Unknown</em>
 						<% end %>
